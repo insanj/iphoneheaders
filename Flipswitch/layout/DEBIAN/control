@@ -1,0 +1,14 @@
+Package: com.a3tweaks.flipswitch
+Name: Flipswitch
+Depends: mobilesubstrate, com.rpetrich.rocketbootstrap | firmware (<< 7.0)
+Conflicts: com.rpetrich.donotdisturbtoggle (<= 1.0-1)
+Version: 1.0.1~rc4
+Architecture: iphoneos-arm
+Description: Centralized toggle system for iOS
+Homepage: http://rpetri.ch/cydia/flipswitch/
+Depiction: http://rpetri.ch/cydia/flipswitch/
+Author: Ryan Petrich & A3Tweaks <rpetrich+flipswitch@gmail.com>
+Section: System
+Tag: purpose::extension, role::developer
+Icon: file:///Applications/Preferences.app/icon-table.png
+dev: flipswitch

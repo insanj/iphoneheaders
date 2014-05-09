@@ -1,20 +1,7 @@
-#import <Availability2.h>
+@interface SBBrightnessController : NSObject
 
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_3_2
++ (SBBrightnessController *)sharedBrightnessController;
 
-#import <Foundation/Foundation.h>
-#import <CoreGraphics/CoreGraphics.h>
-#import <GraphicsServices/GSEvent.h>
+- (void)adjustBacklightLevel:(BOOL)upOrDown;
 
-@interface SBBrightnessController : NSObject {
-	BOOL _debounce;
-}
-+(SBBrightnessController *)sharedBrightnessController;
--(CGFloat)_calcButtonRepeatDelay;
--(void)adjustBacklightLevel:(BOOL)level;
--(void)increaseBrightnessAndRepeat;
--(void)decreaseBrightnessAndRepeat;
--(void)handleBrightnessEvent:(GSEventRef)event;
 @end
-
-#endif

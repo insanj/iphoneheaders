@@ -1,0 +1,5 @@
+{
+	title = "Button Short Hold";
+	group = "Headset";
+	description = "Press and hold headset button";
+}

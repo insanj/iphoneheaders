@@ -1,0 +1,8 @@
+{
+	title = "Spotlight";
+	description = "Show SpringBoard and activate search";
+	group = "System Actions";
+	"compatible-modes" = ("springboard", "application");
+	selector = "spotlight";
+	"requires-no-touch-events" = 1;
+}
