@@ -39,11 +39,20 @@ enum PSTableCellType {
     UILongPressGestureRecognizer *_longTapRecognizer;
 }
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier specifier:(PSSpecifier *)specifier;
 
 @property(retain) PSSpecifier *specifier;
 @property (nonatomic, retain) id target;
 @property SEL action;
+
++ (Class)cellClassForSpecifier:(id)arg1;
++ (int)cellStyle;
++ (int)cellTypeFromString:(id)arg1;
++ (id)reuseIdentifierForBasicCellTypes:(int)arg1;
++ (id)reuseIdentifierForClassAndType:(int)arg1;
++ (id)reuseIdentifierForSpecifier:(id)arg1;
++ (id)stringFromCellType:(int)arg1;
+
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier specifier:(PSSpecifier *)specifier;
 
 - (id)titleLabel;
 - (void)setIcon:(id)arg1;
