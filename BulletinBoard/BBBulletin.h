@@ -15,6 +15,7 @@ typedef NS_ENUM(NSUInteger, BBBulletinAccessoryStyle) {
 
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSString *message;
+@property (nonatomic, retain) NSString *subtitle;
 @property (nonatomic, retain) NSDate *date;
 @property (nonatomic, retain) NSDate *lastInterruptDate;
 

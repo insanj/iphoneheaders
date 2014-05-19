@@ -60,6 +60,7 @@ enum PSTableCellType {
 - (id)iconImageView;
 - (void)setType:(int)arg1;
 - (int)type;
+- (id)title;
 - (void)setCellEnabled:(BOOL)arg1;
 - (void)setValue:(id)arg1;
 - (void)setSeparatorStyle:(int)arg1;

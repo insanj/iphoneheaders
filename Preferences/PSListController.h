@@ -140,4 +140,7 @@
 
 - (void)updateSpecifiers:(id)arg1 withSpecifiers:(id)arg2;
 
+
+- (int)numberOfSectionsInTableView:(id)arg1;
+
 @end
