@@ -1,4 +1,4 @@
-@interface SBApplication : NSObject
+@interface SBApplication : UIApplication
 
 @property (nonatomic, retain) NSString *bundleIdentifier;
 @property (nonatomic, retain) NSString *sandboxPath;

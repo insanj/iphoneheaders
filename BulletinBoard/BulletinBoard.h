@@ -19,3 +19,5 @@
 #import "BBWeeAppController.h"
 
 #import "BulletinBoard.h"
+
+#import "BBSound.h"

@@ -65,4 +65,7 @@ enum PSTableCellType {
 - (void)setValue:(id)arg1;
 - (void)setSeparatorStyle:(int)arg1;
 
+- (id)titleTextLabel;
+- (id)value;
+- (UILabel *)valueLabel;
 @end
