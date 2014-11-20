@@ -1,5 +1,8 @@
 @interface BBAction : NSObject
 
-+ (instancetype)actionWithLaunchBundleID:(NSString *)bundleID callblock:(id)block;
++ (id)actionWithTextReplyCallblock:(id)arg1;
++ (id)actionWithLaunchBundleID:(id)arg1 callblock:(id)arg2;
++ (id)actionWithLaunchURL:(id)arg1 callblock:(id)arg2;
++ (id)actionWithCallblock:(id)arg1;
 
 @end
