@@ -1,3 +1,5 @@
+#import "SBIcon.h"
+
 @class SBApplication;
 
 typedef enum {
@@ -15,9 +17,12 @@ typedef enum {
 	SBApplicationIconFormatDocumentLarge, // 31x37 / 320x320
 } SBApplicationIconFormat;
 
-@interface SBApplicationIcon : NSObject
+@interface SBApplicationIcon : SBIcon
 
 - (instancetype)initWithApplication:(SBApplication *)application;
 - (UIImage *)getIconImage:(SBApplicationIconFormat)image;
+
+- (void)setBadge:(NSString *)badge;
+- (NSString *)applicationBundleID;
 
 @end

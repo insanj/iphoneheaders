@@ -20,6 +20,9 @@
 + (BOOL)migrateLegacyToneSettings;
 + (id)sharedRingtoneManager;
 
+// iOS 8
++ (id)sharedToneManager;
+
 - (id)ITunesRingtoneInformationPlist;
 - (id)_accessQueue;
 - (BOOL)_addToneToManifest:(id)arg1 metadata:(id)arg2 fileName:(id)arg3 mediaDirectory:(id)arg4;
@@ -119,8 +122,15 @@
 - (BOOL)isToneProtectedWithIdentifier:(id)arg1;
 - (void)loadITunesRingtoneInfoPlistAtPath:(id)arg1;
 - (void)loadTextToneInfo;
+
 - (id)localizedNameWithIdentifier:(id)arg1;
 - (id)localizedRingtoneNameWithIdentifier:(id)arg1;
+
+
+// iOS 8
+- (id)_localizedNameOfToneWithIdentifier:(id)arg1;
+
+
 - (id)newAVItemWithRingtoneIdentifier:(id)arg1;
 - (id)newMailPreferenceKeyForAccount:(id)arg1;
 - (id)nullTextToneName;
