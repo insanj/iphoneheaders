@@ -139,7 +139,7 @@
 -(void)endUpdates;
 
 - (void)updateSpecifiers:(id)arg1 withSpecifiers:(id)arg2;
-
+- (id)indexPathForSpecifier:(id)arg1;
 
 - (int)numberOfSectionsInTableView:(id)arg1;
 
