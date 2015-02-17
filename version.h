@@ -61,7 +61,7 @@
 #ifndef kCFCoreFoundationVersionNumber_iOS_8_0
 #define kCFCoreFoundationVersionNumber_iOS_8_0 1129.15
 #endif
- 
+
 /**
  * Let's also define some useful functions to check which firmware
  * the user is on. (Note that feature detection is highly

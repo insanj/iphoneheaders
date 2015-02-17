@@ -11,7 +11,7 @@
 	BOOL _showingSetupController;
 	BOOL _selectingRow;
 	NSString* _specifierID;
-	PSSpecifier* _specifier;
+//	PSSpecifier* _specifier;
 	NSMutableArray* _groups;
 	NSMutableArray* _bundleControllers;
 	BOOL _bundlesLoaded;

@@ -1,0 +1,10 @@
+Package: ws.hbang.common
+Name: Cephei
+Version: 1.2
+Architecture: iphoneos-arm
+Description: Useful functions for tweak developers
+Maintainer: HASHBANG Productions <support@hbang.ws>
+Author: HASHBANG Productions <support@hbang.ws>
+Support: https://www.hbang.ws/faq
+Section: Development
+Tag: role::developer, cydia::obsolete

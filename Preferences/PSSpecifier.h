@@ -28,6 +28,17 @@
 @property(retain) NSString *name;
 @property(nonatomic, readwrite) int cellType;
 
+@property (strong, nonatomic) NSArray *values;
+@property (strong, nonatomic) NSDictionary *properties;
+@property Class detailControllerClass;
+@property Class editPaneClass;
+@property (strong, nonatomic) id userInfo;
+@property (strong, nonatomic) id shortTitleDictionary;
+@property (strong, nonatomic) id titleDictionary;
+@property (strong, nonatomic) id target;
+
+@property SEL buttonAction;
+
 + (id)_bundle;
 + (id)_dataclassIconCache;
 + (id)_iconForDataclass:(id)arg1;
@@ -49,8 +60,9 @@
 + (id)preferenceSpecifierNamed:(id)arg1 target:(id)arg2 set:(SEL)arg3 get:(SEL)arg4 detail:(Class)arg5 cell:(int)arg6 edit:(Class)arg7;
 + (id)switchSpecifierWithTitle:(id)arg1 target:(id)arg2 setter:(SEL)arg3 getter:(SEL)arg4 key:(id)arg5;
 
-- (NSDictionary *)properties;
 - (void)setProperty:(id)property forKey:(NSString*)key;
 - (id)propertyForKey:(NSString*)key;
+
+- (PSSpecifier *)init;
 
 @end

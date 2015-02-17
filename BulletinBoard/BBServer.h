@@ -281,6 +281,21 @@
 - (void)withdrawBulletinRequestsWithPublisherBulletinID:(id)arg1 forSectionID:(id)arg2;
 - (void)withdrawBulletinRequestsWithRecordID:(id)arg1 forSectionID:(id)arg2;
 
+// ios 8
+
+- (void)_addActiveSectionID:(id)arg1;
+- (void)_addBulletin:(id)arg1;
+- (void)_removeActiveSectionID:(id)arg1 fromCategory:(int)arg2;
+- (void)_removeActiveSectionID:(id)arg1;
+- (void)_removeBulletin:(id)arg1 rescheduleTimerIfAffected:(BOOL)arg2 shouldSync:(BOOL)arg3;
+- (void)_removeBulletin:(id)arg1 shouldSync:(BOOL)arg2;
+- (void)_removeObserver:(id)arg1;
+- (void)_removeSection:(id)arg1;
+- (void)_removeSettingsGatewayConnection:(id)arg1;
+- (void)_removeSuspendedConnection:(id)arg1;
+- (void)_removeSystemStateConnection:(id)arg1;
+- (void)_removeUtilityConnection:(id)arg1;
+
 @end
 
 
