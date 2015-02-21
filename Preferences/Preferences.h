@@ -19,3 +19,4 @@
 #import "TexttonePane.h"
 #import "ToneController.h"
 #import "TonePane.h"
+#import "PSNotificationSettingsDetail.h"

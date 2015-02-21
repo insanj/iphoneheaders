@@ -2,6 +2,9 @@
 
 @class PSSpecifier;
 
+#ifndef PSTableCellType
+#define PSTableCellType
+
 enum PSTableCellType {
     PSGroupCell,
     PSLinkCell,
@@ -19,6 +22,8 @@ enum PSTableCellType {
     PSButtonCell,
     PSEditTextViewCell
 } PSTableCellType;
+
+#endif
 
 @interface PSTableCell : UITableViewCell  {
     id _value;
