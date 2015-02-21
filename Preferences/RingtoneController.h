@@ -1,4 +1,3 @@
-
 #import "PSDetailController.h"
 
 @interface RingtoneController : PSDetailController
