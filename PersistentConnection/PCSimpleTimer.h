@@ -5,9 +5,9 @@
 // @class NSDate, NSObject<OS_dispatch_queue>, NSRunLoop, NSString, PCDispatchTimer;
 
 @interface PCSimpleTimer : NSObject /*<PCLoggingDelegate> {
-    CGFloat _fireTime;
-    CGFloat _startTime;
-    CGFloat _lastUpdateTime;
+    double _fireTime;
+    double _startTime;
+    double _lastUpdateTime;
     BOOL _triggerOnGMTChange;
     BOOL _disableSystemWaking;
     NSDate *_scheduledWakeDate;
@@ -26,7 +26,7 @@
     NSObject<OS_dispatch_queue> *_queue;
 }*/
 
-+ (CGFloat)currentMachTimeInterval;
++ (double)currentMachTimeInterval;
 + (id)lastSystemWakeDate;
 @property(readonly, nonatomic) NSString *loggingIdentifier; // @synthesize loggingIdentifier=_serviceIdentifier;
 @property(nonatomic) BOOL disableSystemWaking; // @synthesize disableSystemWaking=_disableSystemWaking;
@@ -50,10 +50,10 @@
 - (void)scheduleInQueue:(id)arg1;
 - (void)scheduleInRunLoop:(id)arg1 inMode:(id)arg2;
 - (void)scheduleInRunLoop:(id)arg1;
-- (void)updateFireTime:(CGFloat)arg1 triggerOnGMTChange:(BOOL)arg2;
+- (void)updateFireTime:(double)arg1 triggerOnGMTChange:(BOOL)arg2;
 - (void)dealloc;
-- (id)initWithAbsoluteTime:(CGFloat)arg1 serviceIdentifier:(id)arg2 target:(id)arg3 selector:(SEL)arg4 userInfo:(id)arg5 triggerOnGMTChange:(BOOL)arg6;
-- (id)initWithTimeInterval:(CGFloat)arg1 serviceIdentifier:(id)arg2 target:(id)arg3 selector:(SEL)arg4 userInfo:(id)arg5;
+- (id)initWithAbsoluteTime:(double)arg1 serviceIdentifier:(id)arg2 target:(id)arg3 selector:(SEL)arg4 userInfo:(id)arg5 triggerOnGMTChange:(BOOL)arg6;
+- (id)initWithTimeInterval:(double)arg1 serviceIdentifier:(id)arg2 target:(id)arg3 selector:(SEL)arg4 userInfo:(id)arg5;
 - (id)initWithFireDate:(id)arg1 serviceIdentifier:(id)arg2 target:(id)arg3 selector:(SEL)arg4 userInfo:(id)arg5;
 
 // Remaining properties
