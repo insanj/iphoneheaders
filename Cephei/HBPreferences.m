@@ -1,5 +1,8 @@
 #define _HB_PREFERENCES_M
 #import "HBPreferences.h"
+#import <version.h>
+
+#define HAS_CFPREFSD (IS_IOS_OR_NEWER(iOS_8_0))
 
 typedef NS_ENUM(NSUInteger, HBPreferencesType) {
 	HBPreferencesTypeObjectiveC,
@@ -36,6 +39,9 @@ void HBPreferencesDarwinNotifyCallback(CFNotificationCenterRef center, void *obs
 @implementation HBPreferences {
 	NSMutableDictionary *_preferences;
 	NSMutableDictionary *_pointers;
+
+	NSMutableDictionary *_preferenceChangeBlocks;
+	NSMutableArray *_preferenceChangeBlocksGlobal;
 }
 
 #pragma mark - Initialization
@@ -76,8 +82,26 @@ void HBPreferencesDarwinNotifyCallback(CFNotificationCenterRef center, void *obs
 }
 
 - (void)_didReceiveDarwinNotification {
+	if (!HAS_CFPREFSD) {
+		[self synchronize];
+	}
+
 	[self _updateRegisteredObjects];
 	[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:HBPreferencesDidChangeNotification object:self]];
+
+	if (_preferenceChangeBlocks && _preferenceChangeBlocks.allKeys.count > 0) {
+		for (NSString *key in _preferenceChangeBlocks) {
+			for (HBPreferencesChangeCallback callback in _preferenceChangeBlocks[key]) {
+				callback(key, [self objectForKey:key]);
+			}
+		}
+	}
+
+	if (_preferenceChangeBlocksGlobal && _preferenceChangeBlocksGlobal.count > 0) {
+		for (HBPreferencesChangeCallback callback in _preferenceChangeBlocksGlobal) {
+			callback();
+		}
+	}
 }
 
 - (void)_updateRegisteredObjects {
@@ -196,6 +220,11 @@ void HBPreferencesDarwinNotifyCallback(CFNotificationCenterRef center, void *obs
 	_preferences[key] = value;
 
 	CFPreferencesSetValue((CFStringRef)key, (CFPropertyListRef)value, (CFStringRef)_identifier, CFSTR("mobile"), kCFPreferencesCurrentHost);
+
+	if (!HAS_CFPREFSD) {
+		[self synchronize];
+	}
+
 	[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:HBPreferencesDidChangeNotification object:self]];
 }
 
@@ -252,12 +281,42 @@ void HBPreferencesDarwinNotifyCallback(CFNotificationCenterRef center, void *obs
 	[_defaults addEntriesFromDictionary:defaults];
 }
 
+#pragma mark - Register block
+
+- (void)registerPreferenceChangeBlock:(HBPreferencesChangeCallback)callback {
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		_preferenceChangeBlocksGlobal = [[NSMutableArray alloc] init];
+	});
+
+	[_preferenceChangeBlocksGlobal addObject:[callback copy]];
+
+	callback();
+}
+
+- (void)registerPreferenceChangeBlock:(HBPreferencesValueChangeCallback)callback forKey:(NSString *)key {
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		_preferenceChangeBlocks = [[NSMutableDictionary alloc] init];
+	});
+
+	if (!_preferenceChangeBlocks[key]) {
+		_preferenceChangeBlocks[key] = [[NSMutableArray alloc] init];
+	}
+
+	[(NSMutableArray *)_preferenceChangeBlocks[key] addObject:[callback copy]];
+
+	callback(key, [self objectForKey:key]);
+}
+
 #pragma mark - Memory management
 
 - (void)dealloc {
 	[_identifier release];
 	[_defaults release];
 	[_pointers release];
+	[_preferenceChangeBlocks release];
+	[_preferenceChangeBlocksGlobal release];
 
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 

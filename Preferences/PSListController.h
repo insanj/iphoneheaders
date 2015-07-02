@@ -19,7 +19,7 @@
 }
 @property(retain) NSArray* specifiers;
 @property(retain) NSString* specifierID;
-@property(retain) NSString* title;
+//@property(retain) NSString* title;
 @property(readonly, retain) PSSpecifier* specifier;
 
 // iOS 7

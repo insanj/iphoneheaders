@@ -2,6 +2,8 @@
 
 @interface SBMediaController : NSObject
 
+@property(assign, nonatomic, getter=isRingerMuted) BOOL ringerMuted;
+
 + (instancetype)sharedInstance;
 
 - (NSDictionary *)_nowPlayingInfo;

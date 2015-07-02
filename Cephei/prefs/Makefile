@@ -8,7 +8,7 @@ libcepheiprefs_FILES = $(wildcard *.x) $(wildcard *.m)
 libcepheiprefs_FRAMEWORKS = CoreGraphics MessageUI Twitter UIKit
 libcepheiprefs_PRIVATE_FRAMEWORKS = Preferences
 libcepheiprefs_CFLAGS = -include HBGlobal.h
-libcepheiprefs_LIBRARIES = cephei substrate
+libcepheiprefs_LIBRARIES = cephei MobileGestalt substrate
 
 include $(THEOS_MAKE_PATH)/bundle.mk
 include $(THEOS_MAKE_PATH)/library.mk
@@ -19,9 +19,9 @@ ifneq ($(DEBUG),1)
 endif
 
 internal-stage::
-	mkdir -p $(THEOS)/include/Cephei $(THEOS_STAGING_DIR)/usr/include/Cephei
-	rsync -ra *.h $(THEOS_STAGING_DIR)/usr/include/Cephei --exclude HBGlobal.h
-	rsync -ra $(THEOS_STAGING_DIR)/usr/include/Cephei $(THEOS)/include/Cephei/
+	mkdir -p $(THEOS)/include/CepheiPrefs $(THEOS_STAGING_DIR)/usr/include/CepheiPrefs
+	rsync -ra *.h $(THEOS_STAGING_DIR)/usr/include/CepheiPrefs --exclude HBGlobal.h
+	rsync -ra $(THEOS_STAGING_DIR)/usr/include/CepheiPrefs/ $(THEOS)/include/CepheiPrefs
 
 	ln -s Cephei.bundle $(THEOS_STAGING_DIR)/Library/PreferenceBundles/libhbangprefs.bundle
 	ln -s Cephei $(THEOS_STAGING_DIR)/Library/PreferenceBundles/Cephei.bundle/libhbangprefs

@@ -23,7 +23,9 @@
  * preferences themselves and the defaults if a key doesn't exist.
  *
  * Ensure you read the discussion for registerObject:default:forKey: before
- * using the automatic updating mechanism.
+ * using the automatic updating mechanism. objectForKey: does not update as
+ * another process updates the preferences on iOS 7 or older; if you need to
+ * support older iOS versions, use the registration methods instead.
  *
  * ### Example usage:
  *
@@ -43,6 +45,9 @@
  * 		NSLog(@"Can I do thing? %i", doThing);
  * 	}
  */
+
+typedef void(^HBPreferencesChangeCallback)();
+typedef void(^HBPreferencesValueChangeCallback)(NSString *key, id<NSCopying> value);
 
 @interface HBPreferences : NSObject
 
@@ -85,6 +90,9 @@
  *
  * @param key The key for which to return the corresponding value.
  * @returns The object associated with the specified key.
+ * @warning You must manually synchronize preferences or use
+ * registerObject:default:forKey:for this value to be updated when running on
+ * iOS 7 or older.
  */
 - (id)objectForKey:(NSString *)key;
 
@@ -376,6 +384,37 @@
  * @see defaults
  */
 - (void)registerDefaults:(NSDictionary *)defaultValues;
+
+/**
+ * @name Preference Change Callbacks
+ */
+
+/**
+ * Register a block to be called when a preference change is detected.
+ *
+ * Blocks are called after HBPreferences’ cache of values is updated. The block
+ * will also be called immediately after calling this method. See
+ * registerObject:default:forKey: for details on how to set up callbacks.
+ *
+ * @param callback A block object called when the specified key’s value changes.
+ * The block object takes no parameters and returns no value.
+ * @see registerObject:default:forKey:
+ */
+- (void)registerPreferenceChangeBlock:(HBPreferencesChangeCallback)callback;
+
+/**
+ * Register a block to be called when a specific preference is changed.
+ *
+ * Blocks are called after HBPreferences’ cache of values is updated. The block
+ * will also be called immediately after calling this method. See
+ * registerObject:default:forKey: for details on how to set up callbacks.
+ *
+ * @param callback A block object called when the specified key’s value changes.
+ * The block object’s parameters are the key and its new value.
+ * @param key The key to listen for.
+ * @see registerObject:default:forKey:
+ */
+- (void)registerPreferenceChangeBlock:(HBPreferencesValueChangeCallback)callback forKey:(NSString *)key;
 
 /**
  * @name Synchronizing Preferences

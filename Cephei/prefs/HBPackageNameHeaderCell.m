@@ -28,6 +28,8 @@ static NSString *const kHBDebianControlFileAuthorKey = @"Author";
 		self.backgroundColor = [UIColor clearColor];
 		self.backgroundView = IS_MODERN ? nil : [[[UIView alloc] init] autorelease];
 		self.textLabel.textAlignment = NSTextAlignmentCenter;
+		self.textLabel.adjustsFontSizeToFitWidth = NO;
+		self.textLabel.adjustsLetterSpacingToFitWidth = NO;
 
 		_condensed = specifier.properties[@"condensed"] && ((NSNumber *)specifier.properties[@"condensed"]).boolValue;
 		_showAuthor = !specifier.properties[@"showAuthor"] || ((NSNumber *)specifier.properties[@"showAuthor"]).boolValue;
@@ -79,7 +81,13 @@ static NSString *const kHBDebianControlFileAuthorKey = @"Author";
 - (void)updateData {
 	[self _retrievePackageDetails];
 
-	if (![self.textLabel respondsToSelector:@selector(setAttributedText:)]) { // starting to realise the features we take for granted these days...
+	if ([_packageDetails.allValues containsObject:@""]) {
+		// i hate pirate repos
+		return;
+	}
+
+	if (![self.textLabel respondsToSelector:@selector(setAttributedText:)]) {
+		// starting to realise the features we take for granted these days...
 		self.textLabel.text = [NSString stringWithFormat:@"%@%@%@", _packageDetails[kHBDebianControlFileNameKey], _showVersion ? @" " : @"", _showVersion ? _packageDetails[kHBDebianControlFileVersionKey] : @""];
 		return;
 	}
@@ -154,11 +162,12 @@ static NSString *const kHBDebianControlFileAuthorKey = @"Author";
 	NSArray *packageData = [HBOutputForShellCommand([NSString stringWithFormat:@"/usr/bin/dpkg-query -f '${Name}\n==libcephei-divider==\n${Version}\n==libcephei-divider==\n${Author}' -W '%@'", identifier]) componentsSeparatedByString:@"\n==libcephei-divider==\n"];
 
 	[_packageDetails release];
+
 	_packageDetails = [@{
 		kHBDebianControlFilePackageKey: identifier,
-		kHBDebianControlFileNameKey: packageData[0],
-		kHBDebianControlFileVersionKey: packageData[1],
-		kHBDebianControlFileAuthorKey: packageData[2],
+		kHBDebianControlFileNameKey: packageData[0] ?: @"",
+		kHBDebianControlFileVersionKey: packageData[1] ?: @"",
+		kHBDebianControlFileAuthorKey: packageData[2] ?: @"",
 	} retain];
 }
 

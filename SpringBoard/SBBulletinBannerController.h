@@ -5,6 +5,9 @@
 	NSMutableSet* _sectionIDsToPend;
 }
 
+// iOS 8
+- (void)observer:(id)arg1 addBulletin:(id)arg2 forFeed:(NSUInteger)arg3 playLightsAndSirens:(BOOL)arg4 withReply:(id)arg5;
+
 +(id)sharedInstanceIfExists;
 +(id)sharedInstance;
 +(id)_sharedInstanceCreateIfNecessary:(BOOL)necessary;

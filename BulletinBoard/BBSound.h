@@ -33,6 +33,8 @@
 + (id)_possiblyCachedAlertSoundForInitializedSound:(id)arg1;
 + (id)alertSoundWithSystemSoundID:(unsigned long)arg1;
 
+- (id)initWithSystemSoundID:(unsigned long)arg1 soundPath:(id)arg2 behavior:(unsigned int)arg3 vibrationPattern:(id)arg4;
+
 - (BOOL)_isUniquableAlertSound;
 - (id)accountIdentifier;
 - (int)alertType;

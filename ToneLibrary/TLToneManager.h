@@ -15,13 +15,18 @@
 }
 
 // @property(setter=_setAccessQueue:,retain) TLAccessQueue * _accessQueue;
+@property (setter=_setAlertTonesByIdentifier:, nonatomic, retain) NSMutableDictionary *_alertTonesByIdentifier;
 
 + (BOOL)identifierIsTextTone:(id)arg1;
 + (BOOL)migrateLegacyToneSettings;
 + (id)sharedRingtoneManager;
 
 // iOS 8
+- (id)filePathForToneIdentifier:(id)arg1;
+- (id)_filePathForToneIdentifier:(id)arg1 isValid:(BOOL*)arg2;
 + (id)sharedToneManager;
+- (id)_installedTones;
+- (unsigned long long)_installedTonesSize;
 
 - (id)ITunesRingtoneInformationPlist;
 - (id)_accessQueue;
