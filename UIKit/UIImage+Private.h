@@ -1,4 +1,5 @@
 #import <IOSurface/IOSurface.h>
+#import <UIKit/UIKit.h>
 
 @interface UIImage (Private)
 
