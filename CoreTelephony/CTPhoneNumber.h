@@ -19,7 +19,7 @@
 + (id)phoneNumberWithDigits:(id)arg1 countryCode:(id)arg2;
 
 - (id)canonicalFormat;
-- (id)copyWithZone:(_NSZone *)arg1;
+- (id)copyWithZone:(id)arg1;
 - (void)dealloc;
 - (id)encodedString;
 - (id)formatForCallingCountry:(id)arg1;

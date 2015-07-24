@@ -50,6 +50,7 @@ enum PSTableCellType {
 @property(retain) PSSpecifier *specifier;
 @property (nonatomic, retain) id target;
 @property SEL action;
+@property(strong, nonatomic) NSString *title;
 
 + (Class)cellClassForSpecifier:(id)arg1;
 + (int)cellStyle;
@@ -67,7 +68,7 @@ enum PSTableCellType {
 - (id)iconImageView;
 - (void)setType:(int)arg1;
 - (int)type;
-- (id)title;
+// - (id)title;
 - (void)setCellEnabled:(BOOL)arg1;
 - (void)setValue:(id)arg1;
 - (void)setSeparatorStyle:(int)arg1;

@@ -7,9 +7,11 @@
  */
 
 @class CTCarrier, NSDictionary, NSLock, NSString;
+#import <objc/runtime.h>
 
 // struct dispatch_queue_s {};
 
+/*
 struct queue { 
     dispatch_object_s *fObj; 
     NSString *_cachedCellId;
@@ -34,12 +36,13 @@ struct __CTServerConnection {
     unsigned int x5;
     _xpc_connection_s *x6;
 };
+*/
 
 @interface CTTelephonyNetworkInfo : NSObject {
-    queue _queue;
+    // queue _queue;
     CTCarrier *_subscriberCellularProvider;
     id _subscriberCellularProviderDidUpdateNotifier;
-    struct __CTServerConnection *server_connection;
+    // struct __CTServerConnection *server_connection;
     NSLock *server_lock;
 }
 
@@ -55,10 +58,10 @@ struct __CTServerConnection {
 - (void)cleanUpServerConnection;
 - (id)createSignalStrengthDictWithBars:(id)arg1;
 - (void)dealloc;
-- (BOOL)getAllowsVOIP:(BOOL*)arg1 withCTError:(coordinate*)arg2;
-- (BOOL)getCarrierName:(id)arg1 withCTError:(coordinate*)arg2;
-- (BOOL)getMobileCountryCode:(id)arg1 andIsoCountryCode:(id)arg2 withCTError:(coordinate*)arg3;
-- (BOOL)getMobileNetworkCode:(id)arg1 withCTError:(coordinate*)arg2;
+- (BOOL)getAllowsVOIP:(BOOL*)arg1 withCTError:(struct coordinate*)arg2;
+- (BOOL)getCarrierName:(id)arg1 withCTError:(struct coordinate*)arg2;
+- (BOOL)getMobileCountryCode:(id)arg1 andIsoCountryCode:(id)arg2 withCTError:(struct coordinate*)arg3;
+- (BOOL)getMobileNetworkCode:(id)arg1 withCTError:(struct coordinate*)arg2;
 - (void)handleCTRegistrationCellChangedNotification:(id)arg1;
 - (void)handleCTSignalStrengthNotification:(id)arg1;
 - (void)handleNotificationFromConnection:(void*)arg1 ofType:(id)arg2 withInfo:(id)arg3;

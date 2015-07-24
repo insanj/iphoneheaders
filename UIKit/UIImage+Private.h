@@ -9,3 +9,5 @@
 - (instancetype)_initWithIOSurface:(IOSurfaceRef)surface scale:(CGFloat)scale orientation:(UIImageOrientation)orientation;
 
 @end
+
+

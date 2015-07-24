@@ -2,10 +2,10 @@
    Image: /System/Library/Frameworks/CoreTelephony.framework/CoreTelephony
  */
 
-struct coordinate {
+/*struct coordinate {
 	int x1;
 	int x2;
-};
+};*/
 
 @interface CTMessageCenter : NSObject {
 }
@@ -25,15 +25,15 @@ struct coordinate {
 - (id)incomingMessageWithId:(unsigned int)arg1 isDeferred:(BOOL)arg2;
 - (id)incomingMessageWithId:(unsigned int)arg1;
 - (id)init;
-- (coordinate)isDeliveryReportsEnabled:(BOOL*)arg1;
+- (struct coordinate)isDeliveryReportsEnabled:(BOOL*)arg1;
 - (BOOL)isMmsConfigured;
 - (BOOL)isMmsEnabled;
-- (coordinate)send:(id)arg1 withMoreToFollow:(BOOL)arg2;
-- (coordinate)send:(id)arg1;
-- (coordinate)sendMMS:(id)arg1;
-- (coordinate)sendMMSFromData:(id)arg1 messageId:(unsigned int)arg2;
+- (struct coordinate)send:(id)arg1 withMoreToFollow:(BOOL)arg2;
+- (struct coordinate)send:(id)arg1;
+- (struct coordinate)sendMMS:(id)arg1;
+- (struct coordinate)sendMMSFromData:(id)arg1 messageId:(unsigned int)arg2;
 - (void)sendMessageAsSmsToShortCodeRecipients:(id)arg1 andReplaceData:(id*)arg2;
-- (coordinate)sendSMS:(id)arg1 withMoreToFollow:(BOOL)arg2;
+- (struct coordinate)sendSMS:(id)arg1 withMoreToFollow:(BOOL)arg2;
 - (BOOL)sendSMSWithText:(id)arg1 serviceCenter:(id)arg2 toAddress:(id)arg3 withID:(unsigned int)arg4;
 - (BOOL)sendSMSWithText:(id)arg1 serviceCenter:(id)arg2 toAddress:(id)arg3 withMoreToFollow:(BOOL)arg4 withID:(unsigned int)arg5;
 - (BOOL)sendSMSWithText:(id)arg1 serviceCenter:(id)arg2 toAddress:(id)arg3 withMoreToFollow:(BOOL)arg4;

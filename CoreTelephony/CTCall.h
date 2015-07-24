@@ -4,7 +4,7 @@
 
 @class NSString;
 
-struct __CTCall {};
+// struct __CTCall {};
 
 @interface CTCall : NSObject {
     NSString *_callID;
@@ -14,7 +14,7 @@ struct __CTCall {};
 @property(copy) NSString * callID;
 @property(copy) NSString * callState;
 
-+ (id)callForCTCallRef:(__CTCall *)arg1;
++ (id)callForCTCallRef:(id)arg1;
 
 - (void)dealloc;
 - (id)description;

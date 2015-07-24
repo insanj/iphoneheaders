@@ -16,7 +16,7 @@ struct _NSZone { };
 
 - (id)address;
 - (id)canonicalFormat;
-- (id)copyWithZone:(_NSZone *)arg1;
+- (id)copyWithZone:(id)arg1;
 - (void)dealloc;
 - (id)encodedString;
 - (id)initWithAddress:(id)arg1;

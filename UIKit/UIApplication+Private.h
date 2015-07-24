@@ -1,4 +1,4 @@
-@class UIStatusBar;
+#import "UIStatusBar.h"
 
 typedef enum {
 	UIBackgroundStyleDefault,
